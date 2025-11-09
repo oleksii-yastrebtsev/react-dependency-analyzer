@@ -3,17 +3,22 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <base href="BASE" />
     <meta
       http-equiv="Content-Security-Policy"
-      content="default-src 'none'; style-src CSP_SOURCE; script-src 'nonce-NONCE';"
+      content="
+        default-src 'none';
+        script-src 'nonce-NONCE' HMR_HOST;
+        connect-src CSP_SOURCE HMR_HOST HMR_HOST_WS;
+        style-src CSP_SOURCE HMR_HOST;
+        img-src CSP_SOURCE https:;
+      "
     />
     <link rel="stylesheet" href="STYLE_SRC" />
     <title>Dependency view</title>
   </head>
   <body>
+    <main id="root" class="main"></main>
     <script defer nonce="NONCE" src="SCRIPT_SRC"></script>
-    <main class="main">
-      <h1 class="heading">hello world</h1>
-    </main>
   </body>
 </html>

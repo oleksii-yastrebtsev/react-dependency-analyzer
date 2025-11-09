@@ -1,66 +1,89 @@
 {
-  "name": "react-dependency-analyzer",
-  "displayName": "React dependency analyzer",
+  "name": "react-dependencies-blueprint",
+  "displayName": "React Dependencies Blueprint",
   "icon": "./assets/marketplace-icon.png",
-  "description": "",
+  "description": "Visualize your React hooks into diagrams.",
   "version": "0.0.1",
+  "publisher": "OleksiiYastrebtsev",
+  "author": {
+    "email": "aldevid9@gmail.com",
+    "name": "Oleksii Yastrebtsev"
+  },
   "engines": {
     "vscode": "^1.85.0"
   },
   "categories": [
     "Visualization"
   ],
+  "keywords": [
+    "React",
+    "React Dependencies blueprint"
+  ],
+  "type": "module",
   "activationEvents": [],
-  "main": "./out/extension.js",
+  "main": "./build/extention/extention.cjs",
   "contributes": {
     "commands": [
       {
-        "command": "react-dependency-analyzer.showPanel",
-        "title": "Show React Dependency Analyzer"
+        "command": "react-dependencies-blueprint.start",
+        "title": "Show React Viewer",
+        "category": "menu",
+        "icon": {
+          "light": "./assets/icon-dark.svg",
+          "dark": "./assets/icon-dark.svg"
+        }
       }
     ],
-    "viewsContainers": {
-      "activitybar": [
+    "menus": {
+      "editor/title": [
         {
-          "id": "react-dependency-analyzer-sidebar_icon",
-          "title": "React dependency analyzer",
-          "icon": "assets/sidebar-icon.svg"
+          "command": "react-dependencies-blueprint.start",
+          "when": "resourceExtname == .tsx || resourceExtname == .jsx || resourceExtname == .js || resourceExtname == .ts",
+          "group": "navigation"
         }
-      ]
-    },
-    "views": {
-      "react-dependency-analyzer-sidebar_icon": [
+      ],
+      "commandPalette": [
         {
-          "type": "webview",
-          "id": "react-dependency-analyzer-sidebar_panel",
-          "name": "React dependency analyzer"
+          "command": "react-dependencies-blueprint.start",
+          "when": "never"
         }
       ]
     }
   },
   "scripts": {
-    "vscode:prepublish": "npm run compile",
-    "compile": "tsc -p ./",
-    "watch": "tsc -watch -p ./",
-    "watch:webview": "tsc -watch -p ./src/webview/tsconfig.webview.json",
-    "pretest": "npm run compile && npm run lint",
-    "lint": "eslint src --ext ts",
-    "test": "vscode-test"
+    "build:extention": "webpack --config webpack.extention.cjs",
+    "build:webview": "webpack --config webpack.webview.prod.cjs",
+    "build": "npm run build:extention && npm run build:webview",
+    "start:webview": "webpack serve --config webpack.webview.dev.cjs",
+    "watch": "webpack --watch --config webpack.extention.cjs"
   },
   "devDependencies": {
+    "@pmmmwh/react-refresh-webpack-plugin": "^0.6.1",
+    "@types/babel__traverse": "^7.20.5",
     "@types/mocha": "^10.0.6",
-    "@types/node": "18.x",
+    "@types/node": "^22.12.0",
+    "@types/react": "19.1.2",
+    "@types/react-dom": "^19.1.2",
     "@types/vscode": "^1.85.0",
+    "@types/webpack": "^5.28.5",
     "@typescript-eslint/eslint-plugin": "^6.15.0",
     "@typescript-eslint/parser": "^6.15.0",
     "@vscode/test-cli": "^0.0.4",
     "@vscode/test-electron": "^2.3.8",
-    "@types/babel__traverse": "^7.20.5",
+    "css-loader": "^7.1.2",
     "eslint": "^8.56.0",
-    "typescript": "^5.3.3"
+    "react-refresh": "^0.18.0",
+    "style-loader": "^4.0.0",
+    "ts-loader": "^9.5.4",
+    "typescript": "^5.3.3",
+    "webpack": "^5.102.1",
+    "webpack-cli": "^6.0.1",
+    "webpack-dev-server": "^5.2.2"
   },
   "dependencies": {
     "@babel/parser": "^7.23.9",
-    "@babel/traverse": "^7.23.9"
+    "@babel/traverse": "^7.23.9",
+    "react": "19.1.0",
+    "react-dom": "^19.1.0"
   }
 }

@@ -10,8 +10,13 @@
       "type": "extensionHost",
       "request": "launch",
       "args": ["--extensionDevelopmentPath=${workspaceFolder}"],
-      "outFiles": ["${workspaceFolder}/out/**/*.js"],
-      "preLaunchTask": "${defaultBuildTask}"
+      "outFiles": ["${workspaceFolder}/build/**/*.js"],
+      "preLaunchTask": "${defaultBuildTask}",
+      "env": {
+        "NODE_ENV": "development",
+        "EXTENTION_ENV": "development",
+        "DEV_SERVER_URL": "http://localhost:3000"
+      }
     }
   ]
 }

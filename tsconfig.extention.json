@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "target": "ES2020", // Compile to something recent to take advantage of async/await
+    "module": "CommonJS", // Node.js-compatible CommonJS format
+    "lib": ["ES2020"], // Libraries for modern JavaScript features
+    "strict": true, // Enable strict mode
+    "esModuleInterop": true // Allow `import`/`require` interop
+  },
+  "include": ["extention-src"],
+  "exclude": ["node_modules", "src"] // Exclude your frontend (React) code or `webview` folder
+}
