@@ -1,12 +1,9 @@
 import * as vscode from "vscode";
-import * as fs from "fs";
 
-import registerDependencyView from "./registerDependencyView";
-import { SHOW_PANEL } from "./commands";
+import registerWebView from "./registerWebView";
 
 export function activate(context: vscode.ExtensionContext) {
-  registerDependencyView(context);
-  // vscode.commands.executeCommand(SHOW_PANEL);
+  registerWebView(context);
 }
 
 export function deactivate() {}

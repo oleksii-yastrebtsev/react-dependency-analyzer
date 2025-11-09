@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "target": "ESNext", // Target modern browsers with ESNext features
+    "module": "ESNext", // Use ES module format
+    "jsx": "react", // Enable React's JSX syntax
+    "lib": ["DOM", "DOM.Iterable", "ESNext"], // Include browser APIs
+    "strict": true, // Enable TypeScript strict mode
+    "esModuleInterop": true, // Allow `require` interop support
+    "moduleResolution": "node", // Resolve modules in Node.js style
+    "skipLibCheck": true, // Skip type checking of dependencies
+    "resolveJsonModule": true // Enable importing JSON files in frontend code
+  },
+  "include": ["src"],
+  "exclude": ["node_modules", "extention-src"] // Exclude `node_modules`
+}
